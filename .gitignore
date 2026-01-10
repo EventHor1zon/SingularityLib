@@ -51,13 +51,14 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# user-added
+# debug information files
+*.dwo
 
-.vscode/
-.env/
-arm-none-eabi-gcc.cmake
-CMakeCache.txt
-Makefile
-.clangd
-.clang-format
-CMakeFiles/
+# user added 
+
+.old_build
+.vscode
+*.bk
+build_*/
+thirdparty/freertos/
+.crap/
