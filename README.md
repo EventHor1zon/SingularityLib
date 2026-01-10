@@ -1,16 +1,39 @@
-# STM32_SingularityLib
-Attempt at writing some RTOS based STM32 interface drivers.
+
+# Singularity Lib
 
 
-## Goals
+## Brief
 
-- Write a FreeRTOS based object-oriented bare-metal STM32 library
-- Asynchronous interrupt/event-driven interface drivers
-- Common interface drivers, gpio, i2c, basic SPI, ring buffer, watchdogs, etc
-- Write connection layer utilising dma to enable rapid data transfer between peripherals
+What do I want to achieve with this?
 
+- A set of interrupt driven fast communication drivers
+    - UART
+    - SPI
+    - I2C
+    - I2S    
+- Handlers which send events
+- A heirarchical event handler structure
+    - LL Events bubble up to the driver handler
+    - Driver handler emits events to user loops
+- Sensible buffer usage, smart locking
+- Integration with processing buffers, ring-buffers
+- Integration with FreeRTOS
+- Low memory usage
+- Safe fail conditions
+- Utilise DMA
+- Asynchronous operation with async/sync interface
+- Keep this a Library
+- Cmake build files
 
-## Architecture
+- Specific to the current chip-set but later make portable
 
-Ideally heirarchical state machine. First focus on getting an interrupt/event-driven 
-freertos drivers for common interfaces. Build more heirarchical structure as things evolve.
+### Personal Goals
+
+- Unit tests; could be hard with rtos 
+- cleanest of code
+- cleanest of gits
+- architectural thinking
+- embedded debugging practice
+- showcase
+
+### Notes below
