@@ -9,10 +9,7 @@
 *    @created   Sat 10 Jan 22:34:57 GMT 2026
 */
 
-
-#ifndef SINGULARITY_H
-#define SINGULARITY_H
-#endif
+#pragma once
 
 /** Includes **/
 
