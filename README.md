@@ -4,38 +4,13 @@
 
 ## Brief
 
-What do I want to achieve with this?
-
-- A set of interrupt driven fast communication drivers
-    - UART
-    - SPI
-    - I2C
-    - I2S    
-- Handlers which send events
-- A heirarchical event handler structure
-    - LL Events bubble up to the driver handler
-    - Driver handler emits events to user loops
-- Sensible buffer usage, smart locking
-- Integration with processing buffers, ring-buffers
-- Integration with FreeRTOS
-- Low memory usage
-- Safe fail conditions
-- Utilise DMA
-- Asynchronous operation with async/sync interface
-- Keep this a Library
-- Cmake build files
-
-- Specific to the current chip-set but later make portable
-
-### Personal Goals
-
-- Unit tests; could be hard with rtos 
-- cleanest of code
-- cleanest of gits
-- architectural thinking
-- embedded debugging practice
-- showcase
+A lightweight C event system library
 
 ### Notes below
 
-- Now a submodule!
+- Creating a new event bus adds a new Event table
+- Events are published to busses
+- subscribers to this bus are called by the event bus
+- Multiple busses can be registered
+- Multiple subscibers can be registered to a single event
+- Subscribers can register and deregister from an event or bus
