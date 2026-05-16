@@ -16,7 +16,7 @@
 /** Defines **/
 
 #define SNGL_CONFIG_MAX_SUBSCRIBERS 8
-#define SNGL_CONFIG_MAX_EVT_ID      255
+#define SNGL_CONFIG_MAX_EVT_IDS     255
 
 /** Typedefs **/
 
@@ -42,7 +42,7 @@ typedef struct {
             uint8_t emitter;
             uint8_t source;
         };
-    } event;
+    };
 
     void *args;
 } sngl_event_t;
@@ -55,13 +55,45 @@ typedef struct {
 
 typedef struct {
     buslock_t lock;
-    sngl_event_reg_t event_registry[SNGL_CONFIG_MAX_EVT_ID][SNGL_CONFIG_MAX_SUBSCRIBERS];
+    sngl_event_reg_t event_registry[SNGL_CONFIG_MAX_EVT_IDS][SNGL_CONFIG_MAX_SUBSCRIBERS];
 } event_bus_t;
 
 /** Function Declarations **/
 
-sngl_ret_t singularity_init();
+/**
+ *  @brief sngl_init_bus creates a new event bus
+ *
+ *         This function creates the event table registry
+ *         and establishes the event "bus"
+ */
+sngl_ret_t sngl_init_bus();
 
-sngl_ret_t singularity_event_handler();
+/**
+ *  @brief sngl_register event registers an event for
+ *         publication
+ *
+ */
+sngl_ret_t sngl_register_event();
+
+/**
+ *  @brief sngl_subscribe registers a listener to a bus
+ *         and associates a callback
+ *
+ *          This callback function __must not be blocking!__
+ */
+sngl_ret_t sngl_subscribe();
+
+/**
+ *  @brief sngl_unsubscribe unregisters a listener from
+ *         future events on this bus
+ */
+sngl_ret_t sngl_unsubscribe();
+
+/**
+ *  @brief sngl_publish emits an event onto a bus
+ *         calling all handlers for that event in order
+ *         of their registration
+ */
+sngl_ret_t sngl_publish();
 
 /** END **/
