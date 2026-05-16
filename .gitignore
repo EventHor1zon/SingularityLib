@@ -50,3 +50,16 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# debug information files
+*.dwo
+
+# user added 
+
+.old_build
+.vscode
+*.bk
+build_*/
+thirdparty/freertos/
+.crap/
+build/
