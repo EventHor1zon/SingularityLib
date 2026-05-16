@@ -15,7 +15,12 @@
 #include <stdint.h>
 /** Defines **/
 
+#define SNGL_CONFIG_MAX_SUBSCRIBERS 8
+#define SNGL_CONFIG_MAX_EVT_ID      255
+
 /** Typedefs **/
+
+typedef uint32_t buslock_t;
 
 typedef enum __attribute__((packed)) sngl_ret {
     RET_OK = 0,
@@ -43,14 +48,14 @@ typedef struct {
 } sngl_event_t;
 
 typedef struct {
-    bool in_use;
-    sngl_event_t event;
-    sngl_event_prio_t priority;
+    uint8_t in_use;
     event_callback_t callback;
-    void *callback_args;
-} sngl_event_registry_t;
+    void *const callback_args;
+} sngl_event_reg_t;
 
 typedef struct {
+    buslock_t lock;
+    sngl_event_reg_t event_registry[SNGL_CONFIG_MAX_EVT_ID][SNGL_CONFIG_MAX_SUBSCRIBERS];
 } event_bus_t;
 
 /** Function Declarations **/
